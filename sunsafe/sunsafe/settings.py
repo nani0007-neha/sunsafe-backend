@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-efiifcrmjgp4ps!aqbh3n-d9)a6fflih%!4@z)^ndpu5-(o^&3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 
 # Application definition
@@ -74,6 +74,8 @@ WSGI_APPLICATION = 'sunsafe.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+
+#DATABASE_URL = "postgresql://sunsafe_db_user:eGVALm0ulIOaT9kEQacPAUAgNRSC7j8h@dpg-d6psiph5pdvs73a27tdg-a.singapore-postgres.render.com/sunsafe_db"
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -122,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+DEBUG = os.environ.get("DEBUG", "True") == "True"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+
