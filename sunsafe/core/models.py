@@ -106,3 +106,16 @@ class SkinCancerStats(models.Model):
     def __str__(self):
         return f"{self.year} {self.age_group} ({self.skin_tone})"
 
+
+class CancerYearlyStat(models.Model):
+    year = models.IntegerField()
+    region = models.CharField(max_length=100)        # "Australia" or "Victoria"
+    cancer_type = models.CharField(max_length=200)   # e.g. "Melanoma of the skin"
+    cases = models.IntegerField()
+
+    class Meta:
+        unique_together = ("year", "region", "cancer_type")
+        ordering = ["year"]
+
+    def __str__(self):
+        return f"{self.year} {self.region} {self.cancer_type}: {self.cases}"
