@@ -1,7 +1,7 @@
 
 
 ### UV Trends API
-URL (local): http://127.0.0.1:8000/api/uv-trends/
+URL (render): https://sunsafe-web.onrender.com/api/uv-trends/
 - Method: GET
 - Description: Returns yearly UV index values for Melbourne.
 - Example response:
